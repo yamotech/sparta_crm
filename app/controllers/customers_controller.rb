@@ -7,6 +7,11 @@ class CustomersController < ApplicationController
   end
 
   def create
+    @customer = Customer.new(customer_params)
+    # 保存
+    @customer.save
+    # 登録した顧客の詳細画面（show）にリダイレクトされる
+    redirect_to @customer
   end
 
   def edit
@@ -19,5 +24,15 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def customer_params
+    params.require(:customer).permit(
+      :family_name,
+      :given_name,
+      :email
+      )
   end
 end
