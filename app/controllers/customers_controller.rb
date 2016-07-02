@@ -8,10 +8,11 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    # 保存
-    @customer.save
-    # 登録した顧客の詳細画面（show）にリダイレクトされる
-    redirect_to @customer
+    if @customer.save
+      redirect_to @customer
+    else
+      render :new
+    end
   end
 
   def edit
