@@ -23,6 +23,15 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
+      <div>
+        現在設定されている画像<%= image_tag current_user.image_url, class: "media-object", width: 200 %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image_url, "プロフィール画像" %><br />
+        <%= f.text_field :image_url, class: "form-control" %>
+      </div>
+
       <div class="form-group">
         <%= f.label :password, "新しいパスワード" %> <i>（入力しない限り変更しません）</i><br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
