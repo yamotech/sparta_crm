@@ -20,6 +20,9 @@
     <h2>対応履歴</h2>
     <% @comments.each do |comment| %>
       <div class="media">
+        <div class="media-left">
+          <%= image_tag comment.user.image_url, class: "media-object", width: 64 %>
+        </div>
         <div class="media-body">
         <p><%= comment.user.full_name %></p>
           <%= simple_format(comment.body) %>
@@ -34,6 +37,7 @@
     <%= form_for(@comment, url: { controller: :comments, action: :create }) do |f| %>
       <div class="form-group">
         <%= f.label :body, '対応内容' %><br>
+        <%= image_tag current_user.image_url, class: 'media-object', width:64 %>
         <%= f.text_area :body, class: "form-control" %>
       </div>
       <%= f.hidden_field :customer_id, value: @customer.id %>
